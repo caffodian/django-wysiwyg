@@ -1,0 +1,14 @@
+{% extends "django_wysiwyg/ckeditor/includes.html" %}
+
+{% block extra_script %}
+    django_wysiwyg.enable = function django_wysiwyg_enable(editor_name, field_id, config)
+        {
+            if( !config ) {
+                config = django_wysiwyg_editor_configs[field_id] || django_wysiwyg_editor_config;
+            }
+
+            if( !this.editors[editor_name] ) {
+                this.editors[editor_name] = CKEDITOR.inline(field_id, config);
+            }
+        };
+{% endblock %}
